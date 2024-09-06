@@ -1,4 +1,4 @@
-function popup()
+function onclick()
 {
 alert("go eagles");
 }
