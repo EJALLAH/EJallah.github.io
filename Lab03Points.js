@@ -3,7 +3,7 @@ var gl;
 var points;
 init();
 
-function init()
+function init();
 {
     var canvas = document.getElementById( "gl-canvas" );
 
@@ -11,9 +11,9 @@ function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
     
     points=[
-      vec2(  -1 , 1  ),
-      vec2( -1  , -1  ),
-      vec2(  1 , 1  )
+      vec2(-1 , 1),
+      vec2(-1,-1),
+      vec2(1,1)
     ];
     
     //
