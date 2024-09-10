@@ -1,4 +1,4 @@
-function Arraywork()
+function arrayWork()
   {
     var array = [];
     sum = 0;
