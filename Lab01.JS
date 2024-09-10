@@ -1,4 +1,4 @@
-function arrayWork()
+function Arraywork()
   {
     var array = [];
     sum = 0;
@@ -9,7 +9,7 @@ function arrayWork()
       array.push(val);
     }
     var mean = sum/array.length;
-    //in Chrome, this is available in Developer Tools
+    
     console.log(mean);
     var greater = [];
     for (var i=0; i<=5; i++)
