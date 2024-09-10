@@ -13,7 +13,10 @@ function init();
     points=[
       vec2(-1 , 1),
       vec2(-1,-1),
-      vec2(1,1)
+      vec2(1,1),
+      vec2(3,2),
+      Vec2(1,5)
+
     ];
     
     //
