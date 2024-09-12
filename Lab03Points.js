@@ -10,14 +10,15 @@ function init()
     gl = canvas.getContext('webgl2');
     if ( !gl ) { alert( "WebGL isn't available" ); }
     
-    points=[
-      vec4(-1 , 1),
-      vec4(-1,-1),
-      vec4(1,1),
-    
-
+    points=[vec2(0,0),
+      vec2(-0.95 ,0.95),
+      vec2(0,0.95),
+      vec2(0.95,0.95),
+      vec2(-0.95,0.0),
+      vec2(0,0.0),
+      vec2(0.95,0.0)
     ];
-    
+    points.push(vec2(0,-0.95)
     //
     //  Configure WebGL
     //
