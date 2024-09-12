@@ -1,7 +1,4 @@
-"use strict";
-var gl;
-var points;
-init();
+
 
 function init()
 {
