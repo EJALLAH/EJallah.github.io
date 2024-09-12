@@ -12,13 +12,9 @@ function init()
     
     points=[vec2(0,0),
       vec2(-0.95 ,0.95),
-      vec2(0,0.95),
-      vec2(0.95,0.95),
-      vec2(-0.95,0.0),
-      vec2(0,0.0),
-      vec2(0.95,0.0)
+      vec2(0.95,-0.95),
     ];
-    points.push(vec2(0,-0.95)
+    points.push(vec2(0,0.95)
     //
     //  Configure WebGL
     //
