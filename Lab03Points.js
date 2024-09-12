@@ -1,4 +1,7 @@
-
+"use strict";
+var gl;
+var points;
+init();
 
 function init()
 {
@@ -10,6 +13,9 @@ function init()
     points=[vec2(0,0),
       vec2(-0.95 ,0.95),
       vec2(0.95,-0.95),
+      vec2(0,0.95),
+      vec2(0,0),
+      vec2(0.95,0)
     ];
     points.push(vec2(0,0.95)
     //
