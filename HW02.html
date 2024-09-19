@@ -1,12 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head> 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Sierpinski Gasket</title>
-<style> canvas { border: 1px solid black; } </style> 
+<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Koch-like Mountains</title> 
+<style> canvas { border: 1px solid black; } #slider { width: 300px; } </style> 
 </head> 
 <body> 
-<canvas id="sierpinskiCanvas" width="800" height="800"></canvas> 
-<script src="HW02.js"></script>
-</body> 
-</html> 
+<canvas id="glCanvas" width="800" height="600"></canvas> 
+<input id="slider" type="range" min="0" max="6" value="3"> <span id="depthDisplay">Depth: 3</span> <script src="kochMountains.js"></script> </body> </html>
