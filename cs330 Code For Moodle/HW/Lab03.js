@@ -16,10 +16,6 @@ function init()
     ];
     points.push(vec2(0,0.95));
 
-    
-    //
-    //  Configure WebGL
-    //
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
 
@@ -28,13 +24,11 @@ function init()
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
-    // Load the data into the GPU
 
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
-    // Associate out shader variables with our data buffer
 
     var positionLoc = gl.getAttribLocation( program, "aPosition" );
     gl.vertexAttribPointer( positionLoc , 2, gl.FLOAT, false, 0, 0 );
