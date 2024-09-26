@@ -6,17 +6,9 @@ init();
 function init()
 {
     var canvas = document.getElementById( "gl-canvas" );
+
     gl = canvas.getContext('webgl2');
-    if ( !gl ) { alert( "WebGL isn't available" );
-"use strict";
- var points = [ vec2(-0.5, 0.5), 
-// Point 1 vec2(0.3, -0.7), 
-// Point 2 vec2(0.8, 0.1), 
-// Point 3 vec2(-0.9, 0.4), 
-// Additional Point 4 vec2(0.2, -0.8), 
-// Additional Point 5 vec2(0.1, 0.9)
-// Additional Point 6 ];
-}
+    if ( !gl ) { alert( "WebGL isn't available" ); }
     
     points=[vec2(0,0),
     vec2(-0.95,-0.95),
@@ -24,6 +16,10 @@ function init()
     ];
     points.push(vec2(0,0.95));
 
+    
+    //
+    //  Configure WebGL
+    //
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
 
@@ -32,11 +28,13 @@ function init()
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
+    // Load the data into the GPU
 
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
 
+    // Associate out shader variables with our data buffer
 
     var positionLoc = gl.getAttribLocation( program, "aPosition" );
     gl.vertexAttribPointer( positionLoc , 2, gl.FLOAT, false, 0, 0 );

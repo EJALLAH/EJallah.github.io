@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <title>Lab 03</title>
-</head>
+</HEAD>
 
-<body>
+<BODY>
 <canvas id="gl-canvas" width="512" height="512">
-
+Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
 
 <script id="vertex-shader" type="x-shader/x-vertex">
@@ -16,29 +16,25 @@ in vec4 aPosition;
 void
 main()
 {
-  gl_PointSize = 10.0;
+  gl_PointSize = 4.0;
   gl_Position = aPosition;
 }
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
-#version 300 es in vec4 aPosition; 
-// Input from application void main() { 
-gl_PointSize = 8.0; 
-// Change this value to adjust point size gl_Position = aPosition; 
-// Set the position }
+#version 300 es
+precision mediump float;
+out vec4 fColor;
+void
+main()
 {
-#version 300 es precision mediump float; 
-// Set precision for floating point out vec4 fColor; 
-// Output color void main() { 
-fColor = vec4(0.0, 1.0, 0.0, 1.0); 
-// Change color to green 
+  fColor = vec4( 1.0, 0.0, 0.0, 1.0 );
 }
-
 </script>
 <script type="text/javascript" src="../Common/utility.js"></script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
 <script type="text/javascript" src="../Common/MVnew.js"></script>
+<script type="text/javascript" src="Lab03.js"></script>
  
-</body>
-</html>
+</BODY>
+</HTML>
