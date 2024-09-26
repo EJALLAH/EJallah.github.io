@@ -6,9 +6,17 @@ init();
 function init()
 {
     var canvas = document.getElementById( "gl-canvas" );
-    var points = [ vec2(-0.5, 0.5), vec2(0.5, -0.5), vec2(-0.8, -0.2), vec2(0.3, 0.7), vec2(-0.6, 0.1), vec2(0.9, 0.4) ];
     gl = canvas.getContext('webgl2');
-    if ( !gl ) { alert( "WebGL isn't available" ); }
+    if ( !gl ) { alert( "WebGL isn't available" );
+"use strict";
+ var points = [ vec2(-0.5, 0.5), 
+// Point 1 vec2(0.3, -0.7), 
+// Point 2 vec2(0.8, 0.1), 
+// Point 3 vec2(-0.9, 0.4), 
+// Additional Point 4 vec2(0.2, -0.8), 
+// Additional Point 5 vec2(0.1, 0.9)
+// Additional Point 6 ];
+}
     
     points=[vec2(0,0),
     vec2(-0.95,-0.95),

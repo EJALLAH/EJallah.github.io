@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <title>Lab 03</title>
 </head>
 
@@ -22,14 +22,19 @@ main()
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
-#version 300 es
-precision mediump float;
-out vec4 fColor;
-void
-main()
+#version 300 es in vec4 aPosition; 
+// Input from application void main() { 
+gl_PointSize = 8.0; 
+// Change this value to adjust point size gl_Position = aPosition; 
+// Set the position }
 {
-  fColor = vec4( 0.0, 0.0, 1.0, 1.0 );
+#version 300 es precision mediump float; 
+// Set precision for floating point out vec4 fColor; 
+// Output color void main() { 
+fColor = vec4(0.0, 1.0, 0.0, 1.0); 
+// Change color to green 
 }
+
 </script>
 <script type="text/javascript" src="../Common/utility.js"></script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
