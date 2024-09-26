@@ -6,7 +6,7 @@ init();
 function init()
 {
     var canvas = document.getElementById( "gl-canvas" );
-
+    var points = [ vec2(-0.5, 0.5), vec2(0.5, -0.5), vec2(-0.8, -0.2), vec2(0.3, 0.7), vec2(-0.6, 0.1), vec2(0.9, 0.4) ];
     gl = canvas.getContext('webgl2');
     if ( !gl ) { alert( "WebGL isn't available" ); }
     
