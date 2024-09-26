@@ -1,7 +1,8 @@
 "use strict"; 
 var gl; 
 var points; 
-init(); 
+init();
+render(); 
 function init() { var canvas = document.getElementById("gl-canvas"); 
 gl = canvas.getContext('webgl2'); 
 if (!gl) { alert("WebGL isn't available"); 
