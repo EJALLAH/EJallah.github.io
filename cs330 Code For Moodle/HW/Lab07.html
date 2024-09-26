@@ -1,54 +1,50 @@
-"use strict";
-var gl;
-var points;
-init();
+<!DOCTYPE html>
+<html>
 
-function init()
+<title>Lab 07 Rotating Tri KEY</title>
+</head>
+
+<body>
+<button id="Rotation">Toggle Rotation On-Off</button>
+
+<canvas id="gl-canvas" width="512" height="512"> </canvas>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+#version 300 es
+
+in vec4 aPosition;
+uniform float uTheta;
+
+void main()
 {
-    var canvas = document.getElementById( "gl-canvas" );
+    float s = sin(uTheta);
+    float c = cos(uTheta);
 
-    gl = canvas.getContext('webgl2');
-    if ( !gl ) { alert( "WebGL isn't available" ); }
+    gl_Position.x = -s*aPosition.y + c*aPosition.x;
+    gl_Position.y =  s*aPosition.x + c*aPosition.y;
+    gl_Position.z = 0.0;
+    gl_Position.w = 1.0;
 
-    points=[
-    vec2(-0.95,0.95),
-    vec2(0,0.95),
-    vec2(0.95,0.95),
-    vec2(-0.95,0.0),
-    vec2(0,0.0),
-    vec2(0.95,0.0),
-    vec2(-0.95,-0.95),
-    vec2(0.0,-0.95),
-    vec2(0.95,-0.95)
-    ];
-
-    //
-    //  Configure WebGL
-    //
-    gl.viewport( 0, 0, canvas.width, canvas.height );
-    gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
-
-    //  Load shaders and initialize attribute buffers
-
-    var program = initShaders( gl, "vertex-shader", "fragment-shader" );
-    gl.useProgram( program );
-
-    // Load the data into the GPU
-
-    var bufferId = gl.createBuffer();
-    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-    gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
-
-    // Associate out shader variables with our data buffer
-
-    var positionLoc = gl.getAttribLocation( program, "aPosition" );
-    gl.vertexAttribPointer( positionLoc , 2, gl.FLOAT, false, 0, 0 );
-    gl.enableVertexAttribArray( positionLoc );
-
-    render();
-};
-
-function render() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.POINTS, 0, points.length );
 }
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+#version 300 es
+
+precision mediump float;
+uniform vec4 aColor;
+out vec4 fColor;
+
+void main()
+{
+    fColor = aColor;
+}
+</script>
+
+<script src="../Common/initShaders.js"></script>
+<script src="../Common/MVnew.js"></script>
+<script src="Lab07.js"></script>
+
+</body>
+</html>
+
