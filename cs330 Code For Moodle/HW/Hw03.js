@@ -5,6 +5,8 @@ init();
 
 function init()
 {
+// code from Lab 04
+
     var canvas = document.getElementById( "gl-canvas" );
 
     gl = canvas.getContext('webgl2');
