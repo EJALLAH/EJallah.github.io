@@ -73,6 +73,7 @@ function init()
     document.getElementById( "zButton" ).onclick = function () {
         axis = zAxis;
     };
+    document.getElementById("ButtonT").onclick = function(){flag = !flag;};
 
     render();
 }
