@@ -134,7 +134,10 @@ function render()
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     theta[axis] += 2.0;
-    gl.uniform3fv(thetaLoc, theta);
+    gl.uniform3fv(thetaLoc, theta)
+
+    // Using the key to for the axes
+    gl.drawArrays(gl.LINES, numPositions, 6);
 
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
     requestAnimationFrame(render);
