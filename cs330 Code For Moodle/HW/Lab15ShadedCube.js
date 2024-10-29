@@ -59,12 +59,12 @@ var materialShininess = 25.6;
 */
 
 // chrome
-/*
+
 var materialAmbient  = vec4(0.25 , 0.25 , 0.25 , 1.0);
 var materialDiffuse  = vec4(0.4 , 0.4 , 0.4 , 1.0);
 var materialSpecular  = vec4(0.774597 , 0.774597 , 0.774597 , 1.0);
 var materialShininess = 76.8;
-*/
+
 
 // copper
 /*
