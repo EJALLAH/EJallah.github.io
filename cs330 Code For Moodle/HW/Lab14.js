@@ -163,8 +163,15 @@ function render(){
     gl.drawArrays(gl.TRIANGLES, 0, numPosCube);
 
     // ==== color buffer for tretrahedron ==== 
+     gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer2);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(colorsTetraArray), gl.STATIC_DRAW);
+    var colorLoc = gl.getAttribLocation(program, "aColor");
+    gl.vertexAttribPointer(colorLoc, 4, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(colorLoc);
 
     // ==== bind and send vertex info for tretrahedron to vertex shader ====
+     var Tx = translate(1.0,0,0);
+    var S = scale(0.75,0.75,0.75);
 
     // loop thru three vertices for each face/triangle of the tetrahedron
     /*

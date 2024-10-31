@@ -156,8 +156,8 @@ function render(){
     // update modelview matrix with required transformation(s)
     //from the text book
 
-    modelViewMatrix = mult(modelViewMatrix,Tright);
     modelViewMatrix = mult(modelViewMatrix,S);
+    modelViewMatrix = mult(modelViewMatrix,Tright);
     gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
     gl.uniformMatrix4fv(projectionMatrixLoc, false, flatten(projectionMatrix));
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
