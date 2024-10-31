@@ -133,7 +133,8 @@ function render(){
     modelViewMatrix = lookAt(eye, at , up);
     // update modelview matrix with required transformation(s)
     modelViewMatrix = mult(modelViewMatrix,S);
-
+    //from the labkey
+    modelViewMatrix = mult(modelViewMatrix,Tleft);
     gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
     gl.uniformMatrix4fv(projectionMatrixLoc, false, flatten(projectionMatrix));
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
@@ -153,6 +154,9 @@ function render(){
     // since it is left multiplied
     modelViewMatrix = lookAt(eye, at , up);
     // update modelview matrix with required transformation(s)
+    //from the text book
+
+    modelViewMatrix = mult(modelViewMatrix,Tright);
     modelViewMatrix = mult(modelViewMatrix,S);
     gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(modelViewMatrix));
     gl.uniformMatrix4fv(projectionMatrixLoc, false, flatten(projectionMatrix));
