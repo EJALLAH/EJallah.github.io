@@ -114,6 +114,19 @@ String.fromCharCode(event.keyCode);
             deltaT *= 2.0;
             break;
 } };
+//buttons
+
+ document.getElementById( "xButton" ).onclick = function () {
+        axis = xAxis;
+    };
+    document.getElementById( "yButton" ).onclick = function () {
+        axis = yAxis;
+    };
+    document.getElementById( "zButton" ).onclick = function () {
+        axis = zAxis;
+    };
+    document.getElementById("ButtonT").onclick = function(){flag = !flag;};
+
 render(); };
 
 function render()
