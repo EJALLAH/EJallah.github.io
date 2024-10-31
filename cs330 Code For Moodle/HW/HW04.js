@@ -11,6 +11,8 @@ var colorLoc;
 var delay = 100;
 var morph = true;
 init();
+
+//from Hw03
 function init()
 {
     var canvas = document.getElementById(
