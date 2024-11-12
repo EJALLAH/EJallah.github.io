@@ -21,6 +21,13 @@ in vec4 aColor;
 
 out vec4 vColor;
 
+in vec2 vTexCoord;
+
+// initial, masked, underlying color will show
+fColor = vColor*texture(uTextureMap, vTexCoord);
+// not masked, will overwrite underlying colored triangle 
+//fColor = texture(uTextureMap, vTexCoord);
+
 void
 main()
 {
@@ -37,12 +44,17 @@ in vec4 vColor;
 
 out vec4 fColor;
 
+in vec2 aTexCoord;
+
+out vec2 vTexCoord;
+
 uniform sampler2D uTextureMap;
 
 void
 main()
 {
   fColor = vColor;
+  vTexCoord = aTexCoord;
 }
 </script>
 <script type="text/javascript" src="../Common/utility.js"></script>
