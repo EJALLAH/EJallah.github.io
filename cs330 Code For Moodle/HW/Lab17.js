@@ -4,7 +4,7 @@ var points;
 
 var positionsArray = [];
 var colorsArray = [];
-var vertexColor = vec4(0.0 , 0.0 , 1.0 , 1.0);  
+var vertexColor = vec4(0.0, 0.0, 1.0, 1.0);  
 
 window.onload = init;
 
