@@ -4,7 +4,7 @@ var points;
 
 var positionsArray = [];
 var colorsArray = [];
-var vertexColor = vec4( ,  ,  , 1.0);  
+var vertexColor = vec4(1.0 , 0.0 , 0.0 , 1.0);  
 
 window.onload = init;
 
@@ -17,9 +17,9 @@ function init()
 
 // isoceles triangle
     points=[
-    vec4(    ,    ,   , 1.0 ),
-    vec4(    ,    ,   , 1.0 ),
-    vec4(    ,    ,   , 1.0 )
+    vec4(  0.95 , 0.95 , 0.0 , 1.0 ),
+    vec4( -0.95 , 0.95 , 0.0 , 1.0 ),
+    vec4(  0.0  , -0.95 , 0.0  , 1.0 )
     ];
 
     positionsArray.push(points[0]);
