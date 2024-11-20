@@ -8,6 +8,19 @@ var vertexColor = vec4(0.0, 0.0, 1.0, 1.0);
 
 window.onload = init;
 
+function configureTexture(image) {
+    var texture = gl.createTexture();
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, texSize, texSize, 0,
+        gl.RGBA, gl.UNSIGNED_BYTE, image);
+    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,
+          gl.NEAREST_MIPMAP_LINEAR);
+//        gl.NEAREST_MIPMAP_NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+//    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST_MIPMAP_LINEAR);
+
 function init()
 {
     var canvas = document.getElementById( "gl-canvas" );
@@ -15,6 +28,21 @@ function init()
     gl = canvas.getContext('webgl2');
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
+/*
+    points=[
+    vec4( -0.95 , -0.95 , 0.0 , 1.0 ),
+    vec4(  0.95 , -0.95 , 0.0 , 1.0 ),
+    vec4(  0.00 ,  0.95 , 0.0 , 1.0 )
+    ];
+*/
+// right triangle
+/*
+    points=[
+    vec4( -0.95 ,  0.95 , 0.0 , 1.0 ),
+    vec4( -0.95 , -0.95 , 0.0 , 1.0 ),
+    vec4(  0.95 , -0.95 , 0.0 , 1.0 )
+
+    ];
 // isoceles triangle
     points=[
     vec4( -0.95 , -0.95 , 0.0 , 1.0 ),
@@ -28,8 +56,14 @@ function init()
     colorsArray.push(vertexColor);
     positionsArray.push(points[2]);
     colorsArray.push(vertexColor);
+   
+    texCoordsArray.push(texCoord[0]);
+    texCoordsArray.push(texCoord[1]);
+    texCoordsArray.push(texCoord[2]);
+    
 
     
+
     //
     //  Configure WebGL
     //
