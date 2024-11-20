@@ -1,14 +1,17 @@
 "use strict";
 var gl;
 var points;
+
+var flag = true;
+
 // isoceles triangles to form a tetrahedron
     points=[
-    vec4(   ,    ,    , 1.0 ),
-    vec4(   ,    ,    , 1.0 ),
-    vec4(   ,    ,    , 1.0 ),
-    vec4(   ,    ,    , 1.0 )
+    vec4(  0.00 ,  0.50 ,  0.00 , 1.0 ),
+    vec4( -0.50 , -0.50 ,  0.50 , 1.0 ),
+    vec4(  0.50 , -0.50 ,  0.50 , 1.0 ),
+    vec4(  0.50 , -0.50 , -0.50 , 1.0 )
     ];
-
+   
 var texSize = 64;
 // Create a checkerboard pattern using floats
 var image1 = new Array()
@@ -41,10 +44,10 @@ var positionsArray = [];
 var colorsArray = [];
 // define 4 different colors
 var vertexColors = [
-    vec4(   ,    ,    , 1.0 )
-    vec4(   ,    ,    , 1.0 )
-    vec4(   ,    ,    , 1.0 )
-    vec4(   ,    ,    , 1.0 )
+    vec4(0.0, 0.0, 1.0, 1.0),  // blue
+    vec4(1.0, 0.0, 0.0, 1.0),  // red
+    vec4(1.0, 1.0, 0.0, 1.0),  // yellow
+    vec4(0.0, 1.0, 0.0, 1.0)  // green
 ];
 
 window.onload = init;
@@ -63,7 +66,16 @@ function configureTexture(image) {
 
 function triangle (a,b,c,triNum)
 {
-
+positionsArray.push(points[a]); colorsArray.push(vertexColors[triNum]); texCoordsArray.push(texCoord[0]);
+positionsArray.push(points[b]); colorsArray.push(vertexColors[triNum]); texCoordsArray.push(texCoord[1]);
+positionsArray.push(points[c]); colorsArray.push(vertexColors[triNum]); texCoordsArray.push(texCoord[2]);
+}
+function colorTetra()
+{
+    triangle(0,1,2 ,0);
+    triangle(0,2,3 ,1);
+    triangle(0,3,1 ,2);
+    triangle(1,3,2 ,3);
 }
 
 function colorTetra()
@@ -78,10 +90,61 @@ function init()
 {
     var canvas = document.getElementById( "gl-canvas" );
 
+    var xAxis = 0;
+    var yAxis = 1;
+    var zAxis = 2;
+    var axis = xAxis;
+    var theta = vec3(45.0, 45.0, 45.0);
+    var thetaLoc;
+
     gl = canvas.getContext('webgl2');
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     colorTetra();
+
+    thetaLoc = gl.getUniformLocation(program, "uTheta"); document.getElementById("ButtonX").onclick =   function(){axis =
+    xAxis;};
+    document.getElementById("ButtonY").onclick = function(){axis =
+    yAxis;};
+    document.getElementById("ButtonZ").onclick = function(){axis =
+    zAxis;};
+    document.getElementById("ButtonT").onclick = function(){flag =
+    !flag;};
+
+    if(flag) theta[axis] += 2.0; 
+    gl.uniform3fv(thetaLoc, theta);
+
+ <button id = "ButtonX">Rotate X</button>
+ <button id = "ButtonY">Rotate Y</button> 
+ <button id = "ButtonZ">Rotate Z</button>
+ <button id = "ButtonT">Toggle Rotation</button>
+
+uniform vec3 uTheta;
+
+ // Compute the sines and cosines of theta for each of
+    //   the three axes in one computation.
+    vec3 angles = radians(uTheta);
+    vec3 c = cos(angles);
+    vec3 s = sin(angles);
+    // Remember: these matrices are column-major
+    mat4 rx = mat4(1.0, 0.0, 0.0, 0.0,
+               0.0, c.x, s.x, 0.0,
+               0.0, -s.x, c.x, 0.0,
+               0.0, 0.0, 0.0, 1.0 );
+    mat4 ry = mat4(c.y, 0.0, -s.y, 0.0,
+               0.0, 1.0, 0.0, 0.0,
+               s.y, 0.0, c.y, 0.0,
+               0.0, 0.0, 0.0, 1.0);
+    mat4 rz = mat4(c.z, s.z, 0.0, 0.0,
+               -s.z, c.z, 0.0, 0.0,
+               0.0,  0.0, 1.0, 0.0,
+0.0,  0.0, 0.0, 1.0);
+  gl_Position = rz * ry * rx * aPosition;
+  gl_Position.z = -gl_Position.z;
+
+
+ gl.enable(gl.DEPTH_TEST);
+ gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     
     //
     //  Configure WebGL
