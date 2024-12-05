@@ -312,3 +312,5 @@ function render() {
     requestAnimationFrame(render)
 
 }
+
+//Fixing bug

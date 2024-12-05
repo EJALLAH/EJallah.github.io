@@ -168,3 +168,5 @@ function render() {
     gl.drawArrays( gl.TRIANGLES, 0, positionsArray.length );
     requestAnimationFrame(render);
 }
+
+//Fixing the bug

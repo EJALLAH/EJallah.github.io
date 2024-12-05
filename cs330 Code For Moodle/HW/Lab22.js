@@ -351,3 +351,5 @@ function render() {
         traverse(torsoId);
         requestAnimationFrame(render);
 }
+
+//Fixing bug

@@ -120,3 +120,5 @@ gl.STATIC_DRAW);
 var texCoordLoc = gl.getAttribLocation(program, "aTexCoord"); gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(texCoordLoc); configureTexture(image2);
 gl.uniform1i( gl.getUniformLocation(program, "uTextureMap"), 0);
 
+
+//Trying to figure out why it's bugging
