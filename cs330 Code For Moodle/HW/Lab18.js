@@ -1,17 +1,16 @@
 "use strict";
 var gl;
 var points;
-
-var flag = true;
-
-// isoceles triangles to form a tetrahedron
+// triangles to form a tetrahedron
     points=[
     vec4(  0.00 ,  0.50 ,  0.00 , 1.0 ),
     vec4( -0.50 , -0.50 ,  0.50 , 1.0 ),
     vec4(  0.50 , -0.50 ,  0.50 , 1.0 ),
     vec4(  0.50 , -0.50 , -0.50 , 1.0 )
     ];
-   
+
+var flag = true;
+
 var texSize = 64;
 // Create a checkerboard pattern using floats
 var image1 = new Array()
@@ -42,7 +41,6 @@ var texCoord = [
 
 var positionsArray = [];
 var colorsArray = [];
-// define 4 different colors
 var vertexColors = [
     vec4(0.0, 0.0, 1.0, 1.0),  // blue
     vec4(1.0, 0.0, 0.0, 1.0),  // red
@@ -66,7 +64,6 @@ function configureTexture(image) {
 
 function triangle (a,b,c,triNum)
 {
-
    positionsArray.push(points[a]);
    colorsArray.push(vertexColors[triNum]);
    texCoordsArray.push(texCoord[0]);
@@ -105,7 +102,7 @@ function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     colorTetra();
-
+    
     //
     //  Configure WebGL
     //
@@ -148,7 +145,6 @@ function init()
 
     gl.uniform1i( gl.getUniformLocation(program, "uTextureMap"), 0);
 
-
     thetaLoc = gl.getUniformLocation(program, "uTheta");
 
     document.getElementById("ButtonX").onclick = function(){axis = xAxis;};
@@ -162,7 +158,9 @@ function init()
 function render() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
+    if(flag) theta[axis] += 2.0;
+    gl.uniform3fv(thetaLoc, theta);
+
     gl.drawArrays( gl.TRIANGLES, 0, positionsArray.length );
     requestAnimationFrame(render);
 }
-
