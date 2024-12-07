@@ -18,20 +18,16 @@ Oops ... your browser doesn't support the HTML5 canvas element
 
 in vec4 aPosition;
 in vec4 aColor;
+in vec2 vTexCoord;
 
 out vec4 vColor;
-in vec2 vTexCoord;
+out vec2 vTexCoord;
 
 void
 main()
 {
-// initial, masked, underlying color will show
-fColor = vColor*texture(uTextureMap, vTexCoord);
-// not masked, will overwrite underlying colored triangle 
-//fColor = texture(uTextureMap, vTexCoord);
-
-in vec2 vTexCoord;
   vColor = aColor;
+  vTexCoord = aTexCoord;
   gl_Position = aPosition;
 }
 </script>
@@ -41,12 +37,9 @@ in vec2 vTexCoord;
 precision mediump float;
 
 in vec4 vColor;
-
-out vec4 fColor;
-
 in vec2 aTexCoord;
 
-out vec2 vTexCoord;
+out vec4 fColor;
 
 uniform sampler2D uTextureMap;
 
@@ -54,7 +47,10 @@ void
 main()
 {
   fColor = vColor;
-  vTexCoord = aTexCoord;
+  // initial, masked, underlying color will show
+fColor = vColor*texture(uTextureMap, vTexCoord);
+// not masked, will overwrite underlying colored triangle 
+//fColor = texture(uTextureMap, vTexCoord);
 }
 </script>
 <script type="text/javascript" src="../Common/utility.js"></script>
