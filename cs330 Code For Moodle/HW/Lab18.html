@@ -3,7 +3,7 @@
 
 <HEAD>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-<title>Lab 18 Texture 3D</title>
+<title>Lab 18 Texture 3D KEY</title>
 
 </HEAD>
 
@@ -28,30 +28,12 @@ in vec2 aTexCoord;
 out vec4 vColor;
 out vec2 vTexCoord;
 
-void
-main()
-{
-  vColor = aColor;
-  vTexCoord = aTexCoord;
-  gl_Position = aPosition;
-}
-</script>
-
-<script id="fragment-shader" type="x-shader/x-fragment">
-#version 300 es
-precision mediump float;
-
-in vec4 vColor;
-in vec2 vTexCoord;
-
-out vec4 fColor;
-
-uniform sampler2D uTextureMap;
+uniform vec3 uTheta;
 
 void
 main()
 {
-   // Compute the sines and cosines of theta for each of
+    // Compute the sines and cosines of theta for each of
     //   the three axes in one computation.
     vec3 angles = radians(uTheta);
     vec3 c = cos(angles);
